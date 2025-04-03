@@ -1,0 +1,514 @@
+import React, { useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+import emailjs from '@emailjs/browser';
+import { 
+  Card, 
+  Input, 
+  Textarea, 
+  Button, 
+  Typography, 
+  Select, 
+  Option,
+  Spinner
+} from '@material-tailwind/react';
+import { uploadFilesToDrive, getDriveFolderLink } from '../services/googleDriveService';
+
+function UploadModel() {
+  const { t } = useTranslation();
+  const formRef = useRef();
+  const fileInputRef = useRef();
+  const [dragActive, setDragActive] = useState(false);
+  const [files, setFiles] = useState([]);
+  const [formData, setFormData] = useState({
+    fullName: '',
+    companyName: '',
+    quantity: '',
+    material: '',
+    phone: '',
+    email: '',
+    additionalInfo: ''
+  });
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  // Malzeme seçenekleri
+  const materialOptions = [
+    'Alüminyum',
+    'Çelik',
+    'Paslanmaz Çelik',
+    'Pirinç',
+    'Bakır',
+    'Plastik',
+    'Diğer'
+  ];
+
+  // Form alanlarını güncelleme fonksiyonu
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+    
+    // Hata durumunu temizle
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: null
+      });
+    }
+  };
+
+  // Malzeme seçimi için özel fonksiyon
+  const handleMaterialChange = (value) => {
+    setFormData({
+      ...formData,
+      material: value
+    });
+    
+    // Hata durumunu temizle
+    if (errors.material) {
+      setErrors({
+        ...errors,
+        material: null
+      });
+    }
+  };
+
+  // Dosya sürükleme olaylarını yönetme
+  const handleDrag = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (e.type === 'dragenter' || e.type === 'dragover') {
+      setDragActive(true);
+    } else if (e.type === 'dragleave') {
+      setDragActive(false);
+    }
+  };
+
+  // Dosya bırakma olayını yönetme
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      handleFiles(e.dataTransfer.files);
+    }
+  };
+
+  // Dosya seçme olayını yönetme
+  const handleFileChange = (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      handleFiles(e.target.files);
+    }
+  };
+
+  // Dosya seçme butonu için
+  const onButtonClick = () => {
+    fileInputRef.current.click();
+  };
+
+  // Dosyaları işleme
+  const handleFiles = (fileList) => {
+    const newFiles = Array.from(fileList);
+    setFiles([...files, ...newFiles]);
+    
+    // Hata durumunu temizle
+    if (errors.files) {
+      setErrors({
+        ...errors,
+        files: null
+      });
+    }
+  };
+
+  // Dosyayı listeden kaldırma
+  const removeFile = (index) => {
+    const newFiles = [...files];
+    newFiles.splice(index, 1);
+    setFiles(newFiles);
+  };
+
+  // Form doğrulama
+  const validateForm = () => {
+    const newErrors = {};
+    
+    // Zorunlu alanları kontrol et
+    if (!formData.fullName.trim()) newErrors.fullName = 'İsim Soyisim zorunludur';
+    if (!formData.companyName.trim()) newErrors.companyName = 'Firma ismi zorunludur';
+    if (!formData.quantity.trim()) newErrors.quantity = 'Adet sayısı zorunludur';
+    if (!formData.material) newErrors.material = 'Malzeme seçimi zorunludur';
+    if (!formData.phone.trim()) newErrors.phone = 'Telefon numarası zorunludur';
+    if (files.length === 0) newErrors.files = 'En az bir dosya yüklemeniz gerekmektedir';
+    
+    // Email formatını kontrol et (opsiyonel alan)
+    if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Geçerli bir e-posta adresi giriniz';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // Google Drive'a dosya yükleme fonksiyonu
+  const uploadFilesToGoogleDrive = async (files) => {
+    try {
+      // Google Drive servisimizi kullanarak dosyaları yükle
+      const uploadedFiles = await uploadFilesToDrive(files);
+      return uploadedFiles;
+    } catch (error) {
+      console.error('Google Drive yükleme hatası:', error);
+      throw new Error('Dosyalar Google Drive\'a yüklenirken bir hata oluştu.');
+    }
+  };
+
+  // Form gönderme işlemi
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Form doğrulama
+    if (!validateForm()) {
+      // Hata varsa, sayfayı hata mesajlarına kaydır
+      const firstErrorField = Object.keys(errors)[0];
+      const errorElement = document.querySelector(`[name="${firstErrorField}"]`);
+      if (errorElement) errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    
+    setIsSubmitting(true);
+    setSubmitStatus('processing');
+    
+    try {
+      // 1. Dosyaları Google Drive'a yükle
+      const uploadedFiles = await uploadFilesToGoogleDrive(files);
+      
+      // 2. Email.js ile form bilgilerini ve dosya linklerini gönder
+      const templateParams = {
+        from_name: formData.fullName,
+        company_name: formData.companyName,
+        quantity: formData.quantity,
+        material: formData.material,
+        phone: formData.phone,
+        email: formData.email || 'Belirtilmedi',
+        message: formData.additionalInfo || 'Ek bilgi yok',
+        files_info: uploadedFiles.map(file => `${file.name} (${(file.size / 1024).toFixed(2)} KB)`).join(', '),
+        files_url: getDriveFolderLink()
+      };
+      
+      // Müşteriye bilgilendirme e-postası gönder
+      if (formData.email) {
+        await emailjs.send(
+          'service_dxhbeah',
+          'template_v3w5fgn', // Müşteri bilgilendirme şablonu
+          {
+            to_email: formData.email,
+            to_name: formData.fullName,
+            company_name: formData.companyName,
+            quantity: formData.quantity,
+            material: formData.material
+          },
+          'Sq8gd7BcnY_BkL4WN'
+        );
+      }
+      
+      // Firmaya sipariş bilgilerini gönder
+      await emailjs.send(
+        'service_dxhbeah',
+        'template_0butaqg', // Sipariş talep formu şablonu
+        templateParams,
+        'Sq8gd7BcnY_BkL4WN'
+      );
+      
+      // Başarılı durum
+      setSubmitStatus('success');
+      
+      // Formu sıfırla
+      setFormData({
+        fullName: '',
+        companyName: '',
+        quantity: '',
+        material: '',
+        phone: '',
+        email: '',
+        additionalInfo: ''
+      });
+      setFiles([]);
+      
+    } catch (error) {
+      console.error('Form gönderme hatası:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="py-12 bg-gray-50 min-h-screen">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8">
+          <Typography variant="h2" className="text-3xl font-bold text-gray-900">
+            Hızlı Teklif Alın
+          </Typography>
+          <Typography className="mt-2 text-lg text-gray-600">
+            Dosyanızı yükleyin ve sipariş detaylarınızı girin, size en kısa sürede dönüş yapalım.
+          </Typography>
+        </div>
+        
+        {/* Form kartı */}
+        <Card color="white" shadow={true} className="p-6">
+          {submitStatus === 'success' ? (
+            <div className="text-center py-8">
+              <div className="bg-green-100 p-4 rounded-lg mb-6">
+                <Typography variant="h4" color="green" className="mb-2">
+                  Talebiniz Başarıyla Gönderildi!
+                </Typography>
+                <Typography className="text-gray-700">
+                  Sipariş talebiniz ekibimize iletilmiştir. En kısa sürede sizinle iletişime geçeceğiz.
+                </Typography>
+              </div>
+              <Button 
+                onClick={() => setSubmitStatus(null)} 
+                className="mt-4 bg-primary-blue"
+              >
+                Yeni Talep Oluştur
+              </Button>
+            </div>
+          ) : (
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+              {/* Dosya Yükleme Alanı */}
+              <div className="mb-6">
+                <Typography variant="h6" className="mb-2">
+                  Dosya Yükleme*
+                </Typography>
+                <div 
+                  className={`border-2 border-dashed rounded-lg p-6 text-center ${dragActive ? 'border-blue-500 bg-blue-50' : 'border-gray-300'} ${errors.files ? 'border-red-500' : ''}`}
+                  onDragEnter={handleDrag}
+                  onDragOver={handleDrag}
+                  onDragLeave={handleDrag}
+                  onDrop={handleDrop}
+                >
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    multiple
+                    onChange={handleFileChange}
+                    className="hidden"
+                  />
+                  
+                  <div className="space-y-2">
+                    <Typography className="text-gray-700">
+                      Dosyalarınızı buraya sürükleyip bırakın veya
+                    </Typography>
+                    <Button 
+                      onClick={onButtonClick}
+                      variant="outlined"
+                      className="mt-2"
+                    >
+                      Dosya Seçin
+                    </Button>
+                    <Typography className="text-xs text-gray-500">
+                      3D model dosyaları (.stl, .obj, .step, .iges, vb.) veya teknik çizimler (.pdf, .dwg, vb.)
+                    </Typography>
+                  </div>
+                </div>
+                
+                {errors.files && (
+                  <Typography color="red" className="mt-1 text-sm">
+                    {errors.files}
+                  </Typography>
+                )}
+                
+                {/* Yüklenen Dosyalar Listesi */}
+                {files.length > 0 && (
+                  <div className="mt-4">
+                    <Typography variant="h6" className="mb-2">
+                      Yüklenen Dosyalar
+                    </Typography>
+                    <ul className="divide-y divide-gray-200 border rounded-lg">
+                      {files.map((file, index) => (
+                        <li key={index} className="flex items-center justify-between py-3 px-4">
+                          <div className="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            <div>
+                              <Typography className="text-sm font-medium text-gray-900 truncate" style={{maxWidth: '200px'}}>
+                                {file.name}
+                              </Typography>
+                              <Typography className="text-xs text-gray-500">
+                                {(file.size / 1024).toFixed(2)} KB
+                              </Typography>
+                            </div>
+                          </div>
+                          <Button 
+                            color="red" 
+                            variant="text" 
+                            size="sm" 
+                            onClick={() => removeFile(index)}
+                            className="p-1"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          </Button>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+              
+              {/* Kişisel Bilgiler */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Input
+                    type="text"
+                    label="İsim Soyisim*"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    error={!!errors.fullName}
+                  />
+                  {errors.fullName && (
+                    <Typography color="red" className="mt-1 text-sm">
+                      {errors.fullName}
+                    </Typography>
+                  )}
+                </div>
+                
+                <div>
+                  <Input
+                    type="text"
+                    label="Firma İsmi*"
+                    name="companyName"
+                    value={formData.companyName}
+                    onChange={handleChange}
+                    error={!!errors.companyName}
+                  />
+                  {errors.companyName && (
+                    <Typography color="red" className="mt-1 text-sm">
+                      {errors.companyName}
+                    </Typography>
+                  )}
+                </div>
+              </div>
+              
+              {/* Sipariş Detayları */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Input
+                    type="number"
+                    label="Adet*"
+                    name="quantity"
+                    value={formData.quantity}
+                    onChange={handleChange}
+                    error={!!errors.quantity}
+                  />
+                  {errors.quantity && (
+                    <Typography color="red" className="mt-1 text-sm">
+                      {errors.quantity}
+                    </Typography>
+                  )}
+                </div>
+                
+                <div>
+                  <Select
+                    label="Malzeme*"
+                    value={formData.material}
+                    onChange={handleMaterialChange}
+                    error={!!errors.material}
+                  >
+                    {materialOptions.map((material) => (
+                      <Option key={material} value={material}>
+                        {material}
+                      </Option>
+                    ))}
+                  </Select>
+                  {errors.material && (
+                    <Typography color="red" className="mt-1 text-sm">
+                      {errors.material}
+                    </Typography>
+                  )}
+                </div>
+              </div>
+              
+              {/* İletişim Bilgileri */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Input
+                    type="tel"
+                    label="Telefon Numarası*"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    error={!!errors.phone}
+                  />
+                  {errors.phone && (
+                    <Typography color="red" className="mt-1 text-sm">
+                      {errors.phone}
+                    </Typography>
+                  )}
+                </div>
+                
+                <div>
+                  <Input
+                    type="email"
+                    label="E-posta (Opsiyonel)"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    error={!!errors.email}
+                  />
+                  {errors.email && (
+                    <Typography color="red" className="mt-1 text-sm">
+                      {errors.email}
+                    </Typography>
+                  )}
+                </div>
+              </div>
+              
+              {/* Ek Bilgiler */}
+              <div>
+                <Textarea
+                  label="Ek Bilgiler (Opsiyonel)"
+                  name="additionalInfo"
+                  value={formData.additionalInfo}
+                  onChange={handleChange}
+                />
+              </div>
+              
+              {/* Gönder Butonu */}
+              <div className="text-center">
+                <Button
+                  type="submit"
+                  className="mt-4 bg-primary-blue"
+                  fullWidth
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <div className="flex items-center justify-center">
+                      <Spinner className="h-4 w-4 mr-2" /> Gönderiliyor...
+                    </div>
+                  ) : (
+                    "Teklif Talebini Gönder"
+                  )}
+                </Button>
+                
+                {submitStatus === 'error' && (
+                  <Typography color="red" className="mt-2">
+                    Bir hata oluştu. Lütfen daha sonra tekrar deneyin.
+                  </Typography>
+                )}
+              </div>
+            </form>
+          )}
+        </Card>
+      </div>
+    </div>
+  );
+}
+
+export default UploadModel;

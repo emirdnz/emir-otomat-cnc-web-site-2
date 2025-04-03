@@ -1,0 +1,182 @@
+{
+  "title": "Hakkımızda",
+  "carouselData": [
+    {
+      "title": "Tecrübe",
+      "desc": "1986’dan beri profesyonel CNC otomat tedarikçisiyiz"
+    },
+    {
+      "title": "Tecrübe",
+      "desc": "40 yıllık tecrübemizle sizlere hizmet veriyoruz"
+    }
+  ],
+  "aboutSection": {
+    "title": "EMİR OTOMAT CNC",
+    "subtitle": "Güvenilir Tedarikçiniz<br/>İleri Teknoloji<br/>Güçlü Çözümler",
+    "description1": "İleri teknolojiyle donatılmış 1986’dan beri sektördeki uzmanlığımızla, Emir Otomat CNC olarak müşteri isteklerine en uygun çözümleri sunuyoruz.",
+    "description2": "1986 Yılında kurulan firmamız sektörde profesyonel çalışmaları ile hizmetine devam etmektedir.",
+    "description3": "Firmamız kurulduğundan beri sektörde <strong>lider firmalara profesyonel tedarikçi</strong> olmaya devam etmektedir.",
+    "description4": "Firmamız her zaman üretimle birlikte en güncel teknolojiler ile makine parkurlarını ve üretim kalitesini her zaman profesyonel ekibimiz ile geçmişten bugüne devam ettirmektedir.",
+    "description5": "Firmamız <strong>İndex, Revolver, CNC Otomat</strong> makinelerimiz ile tedarikçiniz yolunda üretimlere devam ettirmekle birlikte <strong>Mobilya Sektörü, Ev Aletleri, Tıbbi Malzemeler, Aydınlatma Parçaları, Otomotiv Parçaları, Klima Parçaları, Doğalgaz Parçaları Ve Savunma Sanayisi</strong> sektörlerine tedarikçi olmaktadır."
+  },
+  "continue": "Devamı →",
+  "aboutUs": "Hakkımızda",
+  "experienceSection": {
+    "title": "Başlangıçtan Sona",
+    "subtitle": "Kalite",
+    "item1": "TS EN ISO 9001 sertifikalı, <br /> ISO 14001 / TS ISO 10002 ",
+    "item2": "Tolerans <br /> +/- 0.0002″",
+    "item3": "Malzeme sertifikası <br /> mevcut",
+    "item4": "Hızlı çözüm <br /> ve lojistik süreç"
+  },
+  "ourWorksSection": {
+    "title": "Çalışmalarımız",
+    "description": "Mobilya Sektörü, Ev Aletleri, Tıbbi Malzemeler, Aydınlatma Parçaları, Otomotiv Parçaları, Klima Parçaları, Doğalgaz Parçaları ve Savunma Sanayisi gibi çeşitli sektörlere özel çözümler üretiyoruz.",
+    "work1": {
+      "title": "Sarı (PİRİNÇ) Malzemeler",
+      "desc": "Açıklama"
+    },
+    "work2": {
+      "title": "Otomat Malzemeleri",
+      "desc": "Açıklama"
+    },
+    "work3": {
+      "title": "Plastik Malzemeler",
+      "desc": "Açıklama"
+    },
+    "work4": {
+      "title": "Alüminyum Malzemeler",
+      "desc": "Açıklama"
+    },
+    "work5": {
+      "title": "Paslanmaz Malzemeler",
+      "desc": "Açıklama"
+    },
+    "work6": {
+      "title": "Yüksek Karbonlu Çelik",
+      "desc": "Açıklama"
+    }
+  },
+  "history": {
+    "1986": "<strong><i>Deniz Otomat Otomotiv Limited Şirketi</i></strong> olarak Unkapanı’nda kuruldu.",
+    "2004": "İkitelli Demirciler Sanayi Sitesi'ne taşındık ve şirketimizin unvanı \"<strong><i>GÖRKEM OTOMAT OTOMOTİV VE ENDÜSTRİYEL YAN SANAYİ TİCARET LİMİTED ŞİRKETİ</i></strong>\" olarak değiştirildi.",
+    "2013": "Firmamızda Endüstri 4.0 teknolojisini entegre ettik.",
+    "2014": "Makine parkurumuza CNC Otomat Makinalarını ekledik.",
+    "2018": "ISO 9001:2015 Uluslararası Standart Kalite Sertifikasını edindik.",
+    "2021": "Firma ve unvan değişikliğine gittik ve şirketimizin yeni adı \"<strong><i>EMİR OTOMAT CNC MAKİNA SANAYİ VE TİCARET LİMİTED ŞİRKETİ</i></strong>\" oldu.",
+    "2024": "ISO 14001:2015, TS ISO 10002:2018 ve ISO 31000:2009 sertifikalarını alarak çevre yönetimi, müşteri memnuniyeti ve risk yönetiminde uluslararası standartlara ulaştık."
+  },
+  "visionmission": {
+    "vision": "Vizyon",
+    "ourVision": "Vizyonumuz",
+    "and": "ve",
+    "mission": "Misyon",
+    "ourMission": "Misyonumuz",
+    "visionDesc": "Sektörde öncü bir marka olarak tanınan, global standartlarda kaliteli ürünleri ve hizmetleri ile müşteri memnuniyetini her zaman ön planda tutan bir kuruluştur. En güncel teknolojileri sürekli olarak takip ederek, sürekli yenilenen ve gelişen endüstriyel dünyada liderliği sürdürmek ve müşterilerine sürdürülebilir çözümler sunmak hedefimizdir. Müşterilerimize değer katma anlayışımızla sektörde uzun vadeli ve sağlam bir varlık olma yolunda ilerliyoruz.",
+    "missionDesc": "Endüstriyel alanda yüksek kaliteli CNC otomat makineleri ile endüstriyel yedek parça üretimi ve tedariki ile müşterilerine katma değer sağlamayı amaçlar. Misyonumuz, müşterilerimize uygun fiyatlı, yüksek performanslı ve güvenilir endüstriyel yedek parçaları sunarak, müşterilerimizin üretkenliklerini artırmalarına yardımcı olmaktır. Profesyonel ekibimiz ve güçlü tedarik zincirimizle müşteri memnuniyetini en üst düzeye çıkarmak ve sektöre öncülük etmek, firmamızın temel prensiplerindendir."
+  },
+  "goals": {
+    "title": "Hedeflerimiz",
+    "pricing": {
+      "title": "Uygun Fiyat",
+      "description": "Piyasalara uygun fiyat politikamız, müşterilerimize rekabet avantajı sağlar."
+    },
+    "quality": {
+      "title": "Kalite",
+      "description": "Malzeme kalitemiz, global standartlara uygun olarak sertifikalandırılmıştır."
+    },
+    "satisfaction": {
+      "title": "Memnuniyet",
+      "description": "Müşteri memnuniyeti, en önemli çalışma prensiplerimizden biridir."
+    }
+  },
+  "ourWorksContainer": {
+    "title": "Ürünler"
+  },
+  "machines": {
+    "title": "Makine Parkurumuz",
+    "dialogAlt": "machine"
+  },
+  "certificates": "Sertifikalar",
+  "career": {
+    "title": "Kariyer",
+    "internshipTitle": "Staj",
+    "description": "Sektördeki konumumuzu koruyarak, güncel teknolojilere odaklanarak ve müşteri memnuniyetini ön planda tutarak markamızı daha da ileri taşımak için birlikte çalışalım.",
+    "qualitiesTitle": "Çalışma arkadaşlarımızda aradığımız özellikler",
+    "qualitiesDescription": "Yeniliklere açık, araştırmacı bir ruha sahip, düzenli çalışmayı benimseyen ve takım odaklı çalışma anlayışında olan çalışma arkadaşları arıyoruz.",
+    "applyDescription": "Eğer siz de bu niteliklere sahipseniz ve ekibimize katılmak istiyorsanız, aşağıdaki formu doldurarak iş veya staj başvurusunda bulunabilirsiniz.",
+    "jobFormTitle": "İş Başvuru Formu",
+    "internshipFormTitle": "Staj Başvuru Formu"
+  },
+  "contactUs": {
+    "title": "İletişim",
+    "office": "Ofisimiz",
+    "address": "İkitelli Osb Mahallesi İkitelli Demirciler Sanayi Sitesi, B6 Blok Sokak No: 134, İkitelli Osb/Başakşehir/İstanbul",
+    "phone": "Tel No",
+    "phoneNumber": "+90 (212) 671 17 40",
+    "email": "Email",
+    "emailAddress": "info@emirotomatcnc.com",
+    "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.0634952086625!2d28.8058756!3d41.0676047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa56cdfc65fcf%3A0x2ed9bd14688ece58!2sEmir%20Otomat%20CNC!5e0!3m2!1str!2str!4v1708778990915!5m2!1str!2str"
+  },
+  "nav": {
+    "home": "Anasayfa",
+    "about": "Hakkımızda",
+    "works": "Çalışmalarımız",
+    "quality": "Kalite",
+    "career": "Kariyer",
+    "contact": "İletişim",
+    "products": "Ürünler",
+    "machine_park": "Makine Parkurumuz",
+    "certificates": "Sertifikalar",
+    "job_application": "İş Başvuru Formu",
+    "internship_application": "Staj Başvuru Formu"
+  },
+  "footer": {
+    "corporate": "KURUMSAL",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "production": "ÜRETİM",
+    "ourWorks": "Çalışmalarımız",
+    "certificates": "Sertifikalar",
+    "machinePark": "Makine Parkurumuz",
+    "career": "KARİYER",
+    "jobApplication": "İş Başvuru",
+    "internshipApplication": "Staj Başvuru",
+    "address": "İkitelli Osb Mahallesi<br/>B6 Blok 134 Sokak<br/>Başakşehir/İstanbul",
+    "tel": "+90 (212) 671 17 40",
+    "email": "info@emirotomatcnc.com",
+    "copyright": " 2024 EMİR OTOMAT CNC"
+  },
+  "industries": {
+    "title": "Tüm endüstrilerde hassas üretim uygulamaları",
+    "aerospace": "Uzay ve Havacılık",
+    "automotive": "Otomotiv",
+    "defense": "Savunma",
+    "consumer": "Tüketici Ürünleri",
+    "industrial": "Endüstriyel",
+    "electronics": "Elektronik ve IoT",
+    "medical": "Medikal & Dental",
+    "energy": "Enerji",
+    "robotics": "Robotik ve Makine İmalatı"
+  },
+  "productionProcess": {
+    "title": "Online Parça Üretim Süreci",
+    "step1": {
+      "title": "Modelinizi Yükleyin",
+      "desc": "CAD dosyanızı yükleyin ve anında fiyat teklifi alın"
+    },
+    "step2": {
+      "title": "Sipariş Detaylarını Girin",
+      "desc": "Malzeme, tolerans ve yüzey işlemlerini seçin"
+    },
+    "step3": {
+      "title": "Parça Siparişinizi Oluşturun",
+      "desc": "Üretim detaylarını onaylayın ve siparişinizi verin"
+    },
+    "step4": {
+      "title": "Parçalarınızı Teslim Alın",
+      "desc": "Kalite kontrolden geçen parçalarınız adresinize gönderilir"
+    },
+    "cta": "HIZLICA TEKLİF ALIN"
+  }
+}

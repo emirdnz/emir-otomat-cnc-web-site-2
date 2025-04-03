@@ -1,0 +1,182 @@
+{
+  "title": "About Us",
+  "carouselData": [
+    {
+      "title": "Experience",
+      "desc": "We have been a professional CNC lathe supplier since 1986"
+    },
+    {
+      "title": "Experience",
+      "desc": "We serve you with our 40 years of experience"
+    }
+  ],
+  "aboutSection": {
+    "title": "EMIR OTOMAT CNC",
+    "subtitle": "Your Reliable Supplier<br/>Advanced Technology<br/>Powerful Solutions",
+    "description1": "Since 1986, equipped with advanced technology, we offer the most suitable solutions for customer needs as Emir Otomat CNC.",
+    "description2": "Our company, founded in 1986, continues its services with professional work in the sector.",
+    "description3": "Since our establishment, we have continued to be a <strong>professional supplier to leading companies</strong> in the industry.",
+    "description4": "Our company has always maintained production quality and machine lines with the most up-to-date technologies, alongside our professional team, from past to present.",
+    "description5": "With our <strong>Index, Revolver, CNC Lathe MACHINES </strong>, we continue to be your supplier, while also serving as a supplier to sectors such as <strong>Furniture Industry, Household Appliances, Medical Equipment, Lighting Parts, Automotive Parts, Air Conditioning Parts, Natural Gas Parts, and Defense Industry</strong>."
+  },
+  "continue": "Continue →",
+  "aboutUs": "About Us",
+  "experienceSection": {
+    "title": "From Start to Finish",
+    "subtitle": "Quality",
+    "item1": "TS EN ISO 9001 certified, <br />ISO 14001 / TS ISO 10002 ",
+    "item2": "Tolerance <br /> +/- 0.0002″",
+    "item3": "Material certificate <br /> available",
+    "item4": "Quick solutions <br /> and logistics process"
+  },
+  "ourWorksSection": {
+    "title": "Our Works",
+    "description": "We produce special solutions for various sectors such as Furniture Industry, Home Appliances, Medical Supplies, Lighting Parts, Automotive Parts, Air Conditioning Parts, Natural Gas Parts, and Defense Industry.",
+    "work1": {
+      "title": "Yellow (BRASS) Materials",
+      "desc": "Description"
+    },
+    "work2": {
+      "title": "Free-cutting Steel",
+      "desc": "Description"
+    },
+    "work3": {
+      "title": "Plastic Materials",
+      "desc": "Description"
+    },
+    "work4": {
+      "title": "Aluminum Materials",
+      "desc": "Description"
+    },
+    "work5": {
+      "title": "Stainless Materials",
+      "desc": "Description"
+    },
+    "work6": {
+      "title": "High Carbon Steel",
+      "desc": "Description"
+    }
+  },
+  "history": {
+    "1986": "Established as <strong><i>Deniz Automat Automotive Limited Company</i> </strong> in Unkapanı.",
+    "2004": "We moved to İkitelli Demirciler Industrial Site and the company's name was changed to \"<strong><i>GÖRKEM AUTOMAT AUTOMOTIVE AND INDUSTRIAL SUB-INDUSTRY TRADE LIMITED COMPANY</i></strong>\".",
+    "2013": "We integrated Industry 4.0 technology into our company.",
+    "2014": "We added CNC Lathe Machines to our machinery.",
+    "2018": "We obtained the ISO 9001:2015 International Standard Quality Certificate.",
+    "2021": "We changed the company name to \"<strong><i>EMIR AUTOMAT CNC MACHINERY INDUSTRY AND TRADE LIMITED COMPANY</i></strong>\".",
+    "2024": "We obtained ISO 14001:2015, TS ISO 10002:2018, and ISO 31000:2009 certifications, achieving international standards in environmental management, customer satisfaction, and risk management."
+  },
+  "visionmission": {
+    "vision": "Vision",
+    "ourVision": "Our Vision",
+    "and": "and",
+    "mission": "Mission",
+    "ourMission": "Our Mission",
+    "visionDesc": "Recognized as a leading brand in the industry, we are a company that prioritizes customer satisfaction with high-quality products and services at global standards. Our goal is to continuously follow the latest technologies, maintain leadership in an ever-evolving industrial world, and offer sustainable solutions to our customers. We aim to be a long-term and solid presence in the industry with our approach of adding value to our customers.",
+    "missionDesc": "We aim to add value to our customers by producing and supplying high-quality industrial spare parts. Our mission is to provide our customers with affordable, high-performance, and reliable industrial spare parts to help them increase their productivity. Maximizing customer satisfaction with our professional team and strong supply chain is one of the core principles of our company."
+  },
+  "goals": {
+    "title": "Our Goals",
+    "pricing": {
+      "title": "Affordable Pricing",
+      "description": "Our market-driven pricing policy provides a competitive advantage for our customers."
+    },
+    "quality": {
+      "title": "Quality",
+      "description": "Our material quality is certified in compliance with global standards."
+    },
+    "satisfaction": {
+      "title": "Satisfaction",
+      "description": "Customer satisfaction is one of our most important work principles."
+    }
+  },
+  "ourWorksContainer": {
+    "title": "Products"
+  },
+  "machines": {
+    "title": "Our Machine Parkour",
+    "dialogAlt": "makine"
+  },
+  "certificates": "Certificates",
+  "career": {
+    "title": "Career",
+    "internshipTitle": "Internship",
+    "description": "Let's work together to further strengthen our brand by focusing on modern technologies and maintaining customer satisfaction.",
+    "qualitiesTitle": "Qualities we seek in our team members",
+    "qualitiesDescription": "We are looking for team members who are open to innovations, have a research-oriented mindset, are organized, and adopt a team-focused approach.",
+    "applyDescription": "If you have these qualities and would like to join our team, you can fill out the form below to apply for a job or internship.",
+    "jobFormTitle": "Job Application Form",
+    "internshipFormTitle": "Internship Application Form"
+  },
+  "contactUs": {
+    "title": "Contact Us",
+    "office": "Our Office",
+    "address": "İkitelli Osb Mahallesi İkitelli Demirciler Sanayi Sitesi, B6 Blok Sokak No: 134, İkitelli Osb/Başakşehir/İstanbul",
+    "phone": "Phone Number",
+    "phoneNumber": "+90 (212) 671 17 40",
+    "email": "Email",
+    "emailAddress": "info@emirotomatcnc.com",
+    "mapUrl": "https://www.google.com/maps/embed/v1/place?q=emir+otomat&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "works": "Our Works",
+    "quality": "Quality",
+    "career": "Career",
+    "contact": "Contact Us",
+    "products": "Products",
+    "machine_park": "Our Machine Park",
+    "certificates": "Certificates",
+    "job_application": "Job Application",
+    "internship_application": "Internship Application"
+  },
+  "footer": {
+    "corporate": "COMPANY",
+    "about": "About Us",
+    "contact": "Contact",
+    "production": "PRODUCTION",
+    "ourWorks": "Our Works",
+    "certificates": "Certificates",
+    "machinePark": "Our Machine Park",
+    "career": "CAREER",
+    "jobApplication": "Job Application",
+    "internshipApplication": "Internship Application",
+    "address": "İkitelli Osb Mahallesi<br/>B6 Blok 134 Sokak<br/>Başakşehir/Istanbul",
+    "tel": "+90 (212) 671 17 40",
+    "email": "info@emirotomatcnc.com",
+    "copyright": " 2024 EMİR OTOMAT CNC"
+  },
+  "industries": {
+    "title": "Precision Manufacturing Applications in All Industries",
+    "aerospace": "Aerospace",
+    "automotive": "Automotive",
+    "defense": "Defense",
+    "consumer": "Consumer Products",
+    "industrial": "Industrial",
+    "electronics": "Electronics & IoT",
+    "medical": "Medical & Dental",
+    "energy": "Energy",
+    "robotics": "Robotics & Machine Manufacturing"
+  },
+  "productionProcess": {
+    "title": "Online Part Production Process",
+    "step1": {
+      "title": "Upload Your Model",
+      "desc": "Upload your CAD file for instant quote"
+    },
+    "step2": {
+      "title": "Enter Order Details",
+      "desc": "Specify material, quantity, and other requirements"
+    },
+    "step3": {
+      "title": "Create Your Part Order",
+      "desc": "Review production details and confirm your order"
+    },
+    "step4": {
+      "title": "Receive Your Parts",
+      "desc": "Your parts will be delivered after quality control"
+    },
+    "cta": "REQUEST A QUOTE NOW"
+  }
+}

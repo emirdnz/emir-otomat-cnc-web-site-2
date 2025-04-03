@@ -1,0 +1,10 @@
+.jotform-form > body{
+    margin: 0; /* Remove default margin */
+}
+.jotform-form >iframe{      
+    display: block !important;  /* iframes are inline by default */   
+    height: 100vh !important;  /* Set height to 100% of the viewport height */   
+    width: 100vw !important;  /* Set width to 100% of the viewport width */     
+    border: none !important; /* Remove default border */
+     /* Just for styling */
+}
