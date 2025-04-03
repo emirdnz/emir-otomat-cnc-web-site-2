@@ -8,7 +8,7 @@ import { ErrorLogger } from '../utils/debugHelper';
 import logger from '../utils/logger.js';
 
 /**
- * UploadModel bileşeni - Kullanıcıların dosya yükleyip teklif alabilecekleri sayfa
+ * UploadModel bileşeni - Kullanıcıların dosya yükleyip teklif alabilecekleri sayfadır
  */
 function UploadModel() {
   const { t } = useTranslation();
